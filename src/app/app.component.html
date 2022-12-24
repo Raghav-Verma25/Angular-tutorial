@@ -136,3 +136,12 @@
   <!-- <app-header></app-header> -->
     
 <!-- </form> -->
+<h4 style="text-align: center;background-color:lightgreen;">--------------TODO LIST----------</h4>
+<input type="text" placeholder="Enter here" #task> <br><br>
+<button (click)="addTask(task.value)">click it</button>
+
+<div style="border: 2px solid black;">
+<ul *ngFor="let item of list"  >
+  <li >{{item.name}} <button (click)="removeTask(item.id)">Click for remove</button>  </li>
+  </ul></div>
+
