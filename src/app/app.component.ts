@@ -92,5 +92,20 @@ export class AppComponent {
     console.warn(id);
     this.list=this.list.filter(item => item.id!==id);
   }
+ 
+  //Pass Data Child to Component
+  data = 10;
+  updateChildValue(){
+    this.data = Math.random()*10;
+  }
+
+  //Reusable Component
+   r ="app-user-detial";
+   userDetail =[
+    {name:"raghav",email:"raghav@gmail.com"},
+     {name:"adarsh",email:"adarsh@gmail.com"},
+      {name:"dhruv",email:"dhruv@gmail.com"},
+      {name:"shailesh",email:"shailesh@gmail.com"}
+   ]
 
 }

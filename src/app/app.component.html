@@ -145,3 +145,15 @@
   <li >{{item.name}} <button (click)="removeTask(item.id)">Click for remove</button>  </li>
   </ul></div>
 
+  <div style="text-align: center;background-color:pink; font-size: larger;"><h1>
+    Parent to Child
+  </h1>
+
+  <app-child [item]="data"></app-child>
+  <button (click)="updateChildValue()">Child value update</button>
+
+  <div style="background-color: aqua;"> <h1> Reusable Component</h1>
+  <ul *ngFor="let user of userDetail">
+    <app-user-detial [item3] = "user"></app-user-detial>
+  </ul>
+
