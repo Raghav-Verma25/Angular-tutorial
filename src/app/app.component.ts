@@ -121,4 +121,13 @@ export class AppComponent {
       console.log(item);
     }
 
+    //Reactive form
+    logForm = new FormGroup({
+      user: new FormControl(''),
+      password: new FormControl('')
+    })
+    loginUser(){
+      console.log(this.logForm.value);
+    }
+
 }
