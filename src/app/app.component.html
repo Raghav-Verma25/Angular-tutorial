@@ -170,6 +170,7 @@
   </div>
 
   <div style="background-color: rgb(95, 154, 39);"> <h1>Template Driven Form</h1>
+    <!-- make change in appmodule i.e. import { FormsModule } from '@angular/forms' nd import this -->
     <form #loginForm ="ngForm" (ngSubmit) = userLogin(loginForm.value)>
       <input type="text" placeholder="enter text" name="name" ngModel>
       <br><br>
@@ -178,6 +179,19 @@
       <button>LogIn</button>
     </form>
     <button (click)="userLogin(loginForm.value)">Outside button LogIn</button>
+    </div>
+
+   <div style="background-color: rgb(95, 154, 39);"> <h1>Reactive Driven Form</h1>
+    <!-- change in appComponent i.e. import { FormControl , FormGroup } from '@angular/forms';
+    and make change in app.module i.e.import { ReactiveFormsModule } from '@angular/forms'; and then export this and  -->
+    <form [formGroup] = "logForm" (ngSubmit) = "loginUser()" >
+      <input type="text" placeholder="enter text" name="name"  formControlName = "user">
+      <br><br>
+      <input type="password" placeholder="Enter password" name="password"  formControlName = "password">
+      <br><br>
+      <button>LogIn</button>
+    </form>
+    <!-- <button (click)="userLogin(loginForm.value)">Outside button LogIn</button> -->
     </div>
   
 
