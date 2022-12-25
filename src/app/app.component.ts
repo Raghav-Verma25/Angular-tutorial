@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl , FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -44,11 +45,12 @@ export class AppComponent {
 
   // Templte Reference variable
   
-   logMessage(){
-    console.log();
+   logMessage(value:any){
+    console.log(value);
    }
  
   // Two way binding
+    name5:any;
 
   //ngIf directive
   public condition = true;
@@ -107,5 +109,16 @@ export class AppComponent {
       {name:"dhruv",email:"dhruv@gmail.com"},
       {name:"shailesh",email:"shailesh@gmail.com"}
    ]
+
+   // Send data child to parent component
+    s = "Send data child to parent component"
+    updateData(item4:string){
+      console.warn(item4)
+    }
+
+    //Template Driven Form
+    userLogin(item:any){
+      console.log(item);
+    }
 
 }
