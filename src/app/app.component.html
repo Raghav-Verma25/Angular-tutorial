@@ -185,11 +185,30 @@
     <!-- change in appComponent i.e. import { FormControl , FormGroup } from '@angular/forms';
     and make change in app.module i.e.import { ReactiveFormsModule } from '@angular/forms'; and then export this and  -->
     <form [formGroup] = "logForm" (ngSubmit) = "loginUser()" >
-      <input type="text" placeholder="enter text" name="name"  formControlName = "user">
+      Name:<input type="text" placeholder="enter text" name="name"  formControlName = "user">
+      <span style="color:red" *ngIf = "user && user.invalid && user.touched">This field is invalid</span>
+      <span style="color:rgb(9, 255, 0)" *ngIf = "user && user.valid && user.touched">This field is invalid</span>
       <br><br>
-      <input type="password" placeholder="Enter password" name="password"  formControlName = "password">
+      Email:<input type="email" placeholder="enter email" name="email"  formControlName = "email">
+      <span style="color: red;" *ngIf= "email && email.invalid && email.touched">This field is invalid</span>
+      <span style="color: rgb(9, 255, 0);" *ngIf= "email && email.valid && email.touched">This field is invalid</span>
       <br><br>
-      <button>LogIn</button>
+
+      Password:<input type="password" placeholder="Enter password" name="password"  formControlName = "password">
+      <span style="color: red;" *ngIf ="password && password.invalid && password.touched">Password field is invalid</span>
+      <span style="color: rgb(9, 255, 0)" *ngIf ="password && password.valid && password.touched"><span>Password field is valid</span></span>
+      <br><br>
+
+      Enter only Upper Alphabet:<input type="text" name="upper_Alphabet" placeholder="Enter Enter only Alphabet" name="upper_alphabet"  formControlName = "upper_alphabet">
+      <span style="color: red;" *ngIf ="upper_alphabet && upper_alphabet.invalid && upper_alphabet.touched">Enter only Upper Alphabet field is invalid</span>
+      <span style="color: rgb(9, 255, 0)" *ngIf ="upper_alphabet && upper_alphabet.valid && upper_alphabet.touched"><span>Enter only Alphabet field is valid</span></span>
+      <br><br>
+
+      Enter only Lower Alphabet:<input type="text" name="lower_Alphabet" placeholder="Enter Enter only Alphabet" name="lower_alphabet"  formControlName = "lower_alphabet">
+      <span style="color: red;" *ngIf ="lower_alphabet && lower_alphabet.invalid && lower_alphabet.touched">Enter only Lower Alphabet field is invalid</span>
+      <span style="color: rgb(9, 255, 0)" *ngIf ="lower_alphabet && lower_alphabet.valid && lower_alphabet.touched"><span>Enter only Lower Alphabet field is valid</span></span>
+      <br><br>
+      <button [disabled]="logForm">LogIn</button>
     </form>
     <!-- <button (click)="userLogin(loginForm.value)">Outside button LogIn</button> -->
     </div>
