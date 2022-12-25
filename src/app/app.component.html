@@ -31,12 +31,14 @@
 <h4 style="text-align: center;background-color:lightgreen;">--------------EVENT BINDING----------</h4>
 <button (click)="onClick()">click me {{greeting}} !</button>
 {{greeting}}
+
 <h4 style="text-align: center;background-color:lightgreen;">--------------TEMPLATE----------</h4>
 <input #myInput type="text" >
-<!-- <button (click)="logMessage(myInput.value)">Log</button> -->
+<button (click)="logMessage(myInput.value)">Log</button>
+
 <h4 style="text-align: center;background-color:lightgreen;">--------------TWO WAY BINDING----------</h4>
-<!-- <input [(ngModel)]="name1" type="text">
-{{name1}} -->
+<input [(ngModel)]="name5" type="text">
+{{name5}} 
 
 <h4 style="text-align: center;background-color:lightgreen;">--------------ngIf DIRECTIVE----------</h4>
 <span>Case 1-----------</span>
@@ -88,7 +90,7 @@
 
 
   <!-- Pipes -->
-  <h4 style="text-align: center;background-color:lightgreen;">--------------ngFor DIRECTIVE----------</h4>
+  <h4 style="text-align: center;background-color:lightgreen;">-------------PIPES----------</h4>
   <h2>{{str}}</h2>
   <h5>{{str | lowercase}}</h5>
   <h5>{{str | uppercase}}</h5>
@@ -99,6 +101,7 @@
   <h5>{{0.56 | percent}}</h5>
   <h5>{{0.56 | currency}}</h5>
   <h5>{{0.56 | currency: 'GBP'}}</h5>
+  <h5>{{0.56 | currency: 'INR'}}</h5>
   <h5>{{0.56 | currency: 'GBP' :'code'}}</h5>
   <h5>{{0.56 | currency: 'EUR'}}</h5>
 
@@ -107,6 +110,9 @@
   <h5>{{date | date:'short'}}</h5>
   <h5>{{date | date:'shortDate'}}</h5>
   <h5>{{date | date:'shortTime'}}</h5>
+
+  <h4 style="text-align: center;background-color:lightgreen;">-------------CUSTOM PIPES----------</h4>
+  <h4>{{20 |  usdInr}}</h4>
 
   <!-- Services -->
   <h4 style="text-align: center;background-color:lightgreen;">--------------SERVICE----------</h4>
@@ -148,7 +154,7 @@
   <div style="text-align: center;background-color:pink; font-size: larger;"><h1>
     Parent to Child
   </h1>
-
+  
   <app-child [item]="data"></app-child>
   <button (click)="updateChildValue()">Child value update</button>
 
@@ -156,4 +162,26 @@
   <ul *ngFor="let user of userDetail">
     <app-user-detial [item3] = "user"></app-user-detial>
   </ul>
+  </div>
+</div>
+ 
+  <div style="background-color: rgb(195, 113, 201);"> <h1>Send child sata to parent component</h1>
+  <app-child2 (updateDataEvent) = "updateData($event)"></app-child2>
+  </div>
+
+  <div style="background-color: rgb(95, 154, 39);"> <h1>Template Driven Form</h1>
+    <form #loginForm ="ngForm" (ngSubmit) = userLogin(loginForm.value)>
+      <input type="text" placeholder="enter text" name="name" ngModel>
+      <br><br>
+      <input type="password" placeholder="Enter password" name="password" ngModel>
+      <br><br>
+      <button>LogIn</button>
+    </form>
+    <button (click)="userLogin(loginForm.value)">Outside button LogIn</button>
+    </div>
+  
+
+
+
+
 
