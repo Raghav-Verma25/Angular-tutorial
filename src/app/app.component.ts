@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl , FormGroup , Validator, Validators} from '@angular/forms';
+import { UserDataService } from './services/user-data.service'
+
+interface dataType{
+  name:string , id:number  , Indian:boolean , address:any
+}
 
 @Component({
   selector: 'app-root',
@@ -83,18 +88,7 @@ export class AppComponent {
     console.log(value);
   }
 
-  // Todo list
-  list:any[] = [];
-  addTask(item:string){
-    this.list.push({id:this.list.length , name:item});
-    console.warn(this.list)
-  }
-  
-  removeTask(id:number){
-    console.warn(id);
-    this.list=this.list.filter(item => item.id!==id);
-  }
- 
+
   //Pass Data Child to Component
   data = 10;
   updateChildValue(){
@@ -116,37 +110,21 @@ export class AppComponent {
       console.warn(item4)
     }
 
-    //Template Driven Form
-    userLogin(item:any){
-      console.log(item);
+    //Make service and use in multiple files
+    users:any;
+    constructor(private userData: UserDataService){
+      console.warn("userdata",userData.users());
+      this.users = userData.users();
     }
 
-    //Reactive form
-    logForm = new FormGroup({
-      user: new FormControl('',[Validators.required]),
-      email : new FormControl('',[Validators.required , Validators.email]),
-      password: new FormControl('',[Validators.required , Validators.minLength(5)]),
-      upper_alphabet: new FormControl('',[Validators.required , Validators.pattern('[azA-Z]+$')]),
-      lower_alphabet: new FormControl('',[Validators.required , Validators.pattern('[a-zAZ]+$')])
+    // Model
+    getData(){
+      const data:dataType={
+        name:"Raghav",id:20 , Indian:true , address:"Mathura"
+      }//make interface in after import statement
 
-    })
-    loginUser(){
-      console.log(this.logForm.value);
     }
 
-    get user(){
-      return this.logForm.get('user')
-    }
-    get email(){
-      return this.logForm.get('email')
-    }
-    get password(){
-      return this.logForm.get('password')
-    }
-    get upper_alphabet(){
-      return this.logForm.get('upper_alphabet')
-    }
-    get lower_alphabet(){
-      return this.logForm.get('lower_alphabet')
-    }
+
+    
 }

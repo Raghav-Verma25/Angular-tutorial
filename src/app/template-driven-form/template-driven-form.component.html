@@ -1,0 +1,12 @@
+<!-- <p>template-driven-form works!</p> -->
+<div style="background-color: rgb(95, 154, 39);"> <h1>Template Driven Form</h1>
+    <!-- make change in appmodule i.e. import { FormsModule } from '@angular/forms' nd import this -->
+    <form #loginForm ="ngForm" (ngSubmit) = userLogin(loginForm.value)>
+      <input type="text" placeholder="enter text" name="name" ngModel>
+      <br><br>
+      <input type="password" placeholder="Enter password" name="password" ngModel>
+      <br><br>
+      <button>LogIn</button>
+    </form>
+    <button (click)="userLogin(loginForm.value)">Outside button LogIn</button>
+    </div>

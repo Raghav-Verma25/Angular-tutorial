@@ -120,6 +120,12 @@
   <ul *ngFor = "let emp of employee">
     <li>{{emp.name}}</li>
   </ul>
+  <h4 style="text-align: center;background-color:lightgreen;">--------------SERVICE 2 ----------</h4>
+
+  <h4>Employee List</h4>
+<ul *ngFor = "let user of users">
+  <li>{{user.name}} - {{user.age}}</li>
+</ul>
 
 <!-- <app-root></app-root> -->
 <!-- <app-user-list></app-user-list>
@@ -142,14 +148,7 @@
   <!-- <app-header></app-header> -->
     
 <!-- </form> -->
-<h4 style="text-align: center;background-color:lightgreen;">--------------TODO LIST----------</h4>
-<input type="text" placeholder="Enter here" #task> <br><br>
-<button (click)="addTask(task.value)">click it</button>
 
-<div style="border: 2px solid black;">
-<ul *ngFor="let item of list"  >
-  <li >{{item.name}} <button (click)="removeTask(item.id)">Click for remove</button>  </li>
-  </ul></div>
 
   <div style="text-align: center;background-color:pink; font-size: larger;"><h1>
     Parent to Child
@@ -169,52 +168,8 @@
   <app-child2 (updateDataEvent) = "updateData($event)"></app-child2>
   </div>
 
-  <div style="background-color: rgb(95, 154, 39);"> <h1>Template Driven Form</h1>
-    <!-- make change in appmodule i.e. import { FormsModule } from '@angular/forms' nd import this -->
-    <form #loginForm ="ngForm" (ngSubmit) = userLogin(loginForm.value)>
-      <input type="text" placeholder="enter text" name="name" ngModel>
-      <br><br>
-      <input type="password" placeholder="Enter password" name="password" ngModel>
-      <br><br>
-      <button>LogIn</button>
-    </form>
-    <button (click)="userLogin(loginForm.value)">Outside button LogIn</button>
-    </div>
-
-   <div style="background-color: rgb(95, 154, 39);"> <h1>Reactive Driven Form</h1>
-    <!-- change in appComponent i.e. import { FormControl , FormGroup } from '@angular/forms';
-    and make change in app.module i.e.import { ReactiveFormsModule } from '@angular/forms'; and then export this and  -->
-    <form [formGroup] = "logForm" (ngSubmit) = "loginUser()" >
-      Name:<input type="text" placeholder="enter text" name="name"  formControlName = "user">
-      <span style="color:red" *ngIf = "user && user.invalid && user.touched">This field is invalid</span>
-      <span style="color:rgb(9, 255, 0)" *ngIf = "user && user.valid && user.touched">This field is invalid</span>
-      <br><br>
-      Email:<input type="email" placeholder="enter email" name="email"  formControlName = "email">
-      <span style="color: red;" *ngIf= "email && email.invalid && email.touched">This field is invalid</span>
-      <span style="color: rgb(9, 255, 0);" *ngIf= "email && email.valid && email.touched">This field is invalid</span>
-      <br><br>
-
-      Password:<input type="password" placeholder="Enter password" name="password"  formControlName = "password">
-      <span style="color: red;" *ngIf ="password && password.invalid && password.touched">Password field is invalid</span>
-      <span style="color: rgb(9, 255, 0)" *ngIf ="password && password.valid && password.touched"><span>Password field is valid</span></span>
-      <br><br>
-
-      Enter only Upper Alphabet:<input type="text" name="upper_Alphabet" placeholder="Enter Enter only Alphabet" name="upper_alphabet"  formControlName = "upper_alphabet">
-      <span style="color: red;" *ngIf ="upper_alphabet && upper_alphabet.invalid && upper_alphabet.touched">Enter only Upper Alphabet field is invalid</span>
-      <span style="color: rgb(9, 255, 0)" *ngIf ="upper_alphabet && upper_alphabet.valid && upper_alphabet.touched"><span>Enter only Alphabet field is valid</span></span>
-      <br><br>
-
-      Enter only Lower Alphabet:<input type="text" name="lower_Alphabet" placeholder="Enter Enter only Alphabet" name="lower_alphabet"  formControlName = "lower_alphabet">
-      <span style="color: red;" *ngIf ="lower_alphabet && lower_alphabet.invalid && lower_alphabet.touched">Enter only Lower Alphabet field is invalid</span>
-      <span style="color: rgb(9, 255, 0)" *ngIf ="lower_alphabet && lower_alphabet.valid && lower_alphabet.touched"><span>Enter only Lower Alphabet field is valid</span></span>
-      <br><br>
-      <button [disabled]="logForm">LogIn</button>
-    </form>
-    <!-- <button (click)="userLogin(loginForm.value)">Outside button LogIn</button> -->
-    </div>
   
-
-
-
-
+<app-to-do-list></app-to-do-list>
+<app-template-driven-form></app-template-driven-form>
+<app-reactive-form-validation></app-reactive-form-validation>
 
